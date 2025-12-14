@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+.add_shop
+{
+	position: absolute;
+	left: 267px;
+	top: 159px;
+	width: 371px;
+	height: 292px;
+
+}
+.add_form
+{
+	position: absolute;
+	left: 18px;
+	top: -33px;
+	width: 320px;
+	height: 245px;
+	display: inline-block;
+	border-top: solid;
+	border-bottom: solid;
+	border-right: solid;
+	border-left: solid;
+	border-color: red;
+	margin-top: 50px;
+	border-radius: 10px;
+}

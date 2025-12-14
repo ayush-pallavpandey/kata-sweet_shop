@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Manager</title>
+<link rel="stylesheet" href="css\dash.css">
+<link rel="stylesheet" href="css\dash_upload_sweet.css">
+</head>
+
+<body>
+<div class="header"><p>Manager Desk</p>
+
+  <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn"><img src="bg_icon\avatar.png" alt="no image" id="user_photo" height="30px" width="30px">  User</button>
+
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#change_password">Change Password</a>
+    <a href="#log_out">Log Out</a>
+    <a href="#help">Help</a></div>
+    </div>
+    
+  <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+</div>
+<div class="sidebar">
+<ul>
+  <li><a href="Manager_dash.html">Dashboard</a></li>
+  <li><a href="Manager_add_shop.php">Add Shop</a></li>
+  <li><a href="contact.asp">Delete Shop</a></li>
+  <li><a href="Manager_upload_sweet.html">Upload Sweets</a></li>
+  <li><a href="about.asp">Inventory Stock</a></li>
+  <li><a href="about.asp">Orders</a></li>
+</ul> 
+</div>
+
+<div class="bodywrap">
+
+<img src="black-background2.jpg" alt="no image"  width="1138" height="810">
+  <div class="content1">
+  <form class="form" action="">
+          <datalist id="sweet">
+                <option value="Rasgulla"></option>
+                <option value="Lod chomchom"></option>
+                <option value="Sweet Curd"></option>
+              <option value="Gulab Jamun"></option>
+          </datalist>
+      <table width="377" height="234" padding="5px">
+          <tr><th colspan="2"><span>Upload Product for Order</span></th></tr>
+          <tr><td width="100"><label>Sweet Name: </label></td><td width="178"><input type="list" placeholder="Select Sweet Name" list="sweet" name="sweet_list"></td></tr>
+          <tr><td><label>Price:</label></td><td><input type="text" placeholder="Enter Price" name="price" id="price" align="center">
+          </td></tr>
+          <tr><td height="59"><label>Quantity:</label></td><td><input type="text" placeholder="Enter Quantity" name="qty" id="qty"></td></tr>
+          
+          </table>
+          <button class="sub">Submit</button>
+        </form>
+  </div>
+  
+  <div class="content2">
+  <form class="form" action="">
+          <datalist id="sweet1">
+                <option value="Rasgulla"></option>
+                <option value="Lod chomchom"></option>
+                <option value="Sweet Curd"></option>
+              <option value="Gulab Jamun"></option>
+          </datalist><br>
+          <table padding="5px">
+          <tr><th colspan="2"><span>Remove Product</span></th></tr>
+          <tr><td><label>Sweet Name: </label></td><td><input type="list" list="sweet" name="sweet_list"></td></tr>
+         
+          
+          </table>
+          <button class="sub">Remove</button>
+    </form>
+  
+  </div>
+  
+  <div class="content3">
+  <table width="490" border="1px" >
+          <center>Sweets For Sale</center>
+          <tr><th width="148">Sweet Name</th><th width="70">Price</th><th width="132">Available Qantity</th><th width="112">Expiry Date</th></tr>
+        </table>
+  
+  </div>
+
+</div>
+</body>
+</html>

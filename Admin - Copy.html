@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Admin</title>
+<link rel="stylesheet" href="dash2.css">
+</head>
+
+<body>
+<div class="header"><p>Warehouse Admin</p>
+
+  <div class="dropdown">
+<button onclick="myFunction()" class="dropbtn"><img src="bg_icon\avatar.png" id="user_photo" height=30px width=30px>  User</button>
+
+  <div id="myDropdown" class="dropdown-content">
+    <a href="#change_password">Change Password</a>
+    <a href="#log_out">Log Out</a>
+    <a href="#help">Help</a></div>
+    </div>
+    
+  <script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+
+</div>
+<div class="sidebar">
+<ul>
+  <li><a href="default.asp">Dashboard</a></li>
+  <li><a href="news.asp">Add Sweets</a></li>
+  <li><a href="contact.asp">Delete Sweets</a></li>
+  <li><a href="about.asp">Upload Sweets</a></li>
+  <li><a href="about.asp">Sweet Returns</a></li>
+  <li><a href="about.asp">Factory Stock</a></li>
+  <li><a href="about.asp">Orders</a></li>
+  
+</ul> 
+</div>
+</body>
+</html>

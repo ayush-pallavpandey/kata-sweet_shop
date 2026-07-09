@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Admin</title>
 <link rel="stylesheet" href="dash2.css">
 </head>
@@ -10,25 +11,21 @@
 <div class="header"><p>Warehouse Admin</p>
 
   <div class="dropdown">
-<button onclick="myFunction()" class="dropbtn"><img src="bg_icon\avatar.png" id="user_photo" height=30px width=30px>  User</button>
+<button onclick="myFunction()" class="dropbtn"><img src="avatar.png" id="user_photo" height=30px width=30px>  User</button>
 
   <div id="myDropdown" class="dropdown-content">
     <a href="#change_password">Change Password</a>
     <a href="#log_out">Log Out</a>
     <a href="#help">Help</a></div>
     </div>
-    
+
   <script>
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
 function myFunction() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
-
     var dropdowns = document.getElementsByClassName("dropdown-content");
     var i;
     for (i = 0; i < dropdowns.length; i++) {
@@ -41,19 +38,17 @@ window.onclick = function(event) {
 }
 </script>
 
-
 </div>
 <div class="sidebar">
 <ul>
-  <li><a href="default.asp">Dashboard</a></li>
-  <li><a href="news.asp">Add Sweets</a></li>
-  <li><a href="contact.asp">Delete Sweets</a></li>
-  <li><a href="about.asp">Upload Sweets</a></li>
-  <li><a href="about.asp">Sweet Returns</a></li>
-  <li><a href="about.asp">Factory Stock</a></li>
-  <li><a href="about.asp">Orders</a></li>
-  
-</ul> 
+  <li><a href="index.html">Dashboard</a></li>
+  <li><a href="admin.html">Add Sweets</a></li>
+  <li><a href="admin.html">Delete Sweets</a></li>
+  <li><a href="admin.html">Upload Sweets</a></li>
+  <li><a href="admin.html">Sweet Returns</a></li>
+  <li><a href="admin.html">Factory Stock</a></li>
+  <li><a href="admin.html">Orders</a></li>
+</ul>
 </div>
 </body>
 </html>

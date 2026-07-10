@@ -11,7 +11,6 @@
 <body>
 <div class="app">
 
-  <!-- Top Bar -->
   <header class="topbar">
     <div class="topbar-brand">
       <img src="image.png" alt="logo" class="topbar-logo">
@@ -25,17 +24,14 @@
           <span class="chevron">▼</span>
         </button>
         <div class="dropdown-menu">
-          <a href="#">&#128274; Change Password</a>
-          <div class="divider"></div>
           <a href="index.html">&#127968; Home</a>
           <div class="divider"></div>
-          <a href="#" style="color:#ef5959">&#10006; Log Out</a>
+          <a href="manager.html">&#128101; Manager Desk</a>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- Sidebar -->
   <nav class="sidebar">
     <div class="sidebar-section">
       <div class="sidebar-label">Main</div>
@@ -46,17 +42,9 @@
     <div class="sidebar-section">
       <div class="sidebar-label">Products</div>
       <ul class="nav-list">
-        <li><a href="#add-sweets" class="active"><span class="icon">&#43;</span> Add Sweets</a></li>
-        <li><a href="#delete-sweets"><span class="icon">&#128465;</span> Delete Sweets</a></li>
-        <li><a href="#upload-sweets"><span class="icon">&#8679;</span> Upload Sweets</a></li>
-        <li><a href="#returns"><span class="icon">&#8617;</span> Sweet Returns</a></li>
-      </ul>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-label">Warehouse</div>
-      <ul class="nav-list">
+        <li><a href="#add-sweets" class="active"><span class="icon">&#43;</span> Add Sweet</a></li>
+        <li><a href="#delete-sweets"><span class="icon">&#128465;</span> Remove Sweet</a></li>
         <li><a href="#stock"><span class="icon">&#128230;</span> Factory Stock</a></li>
-        <li><a href="#orders"><span class="icon">&#128203;</span> Orders</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
@@ -67,60 +55,48 @@
       </ul>
     </div>
     <div class="sidebar-footer">
-      <a href="#"><span>&#9881;</span> Settings</a>
+      <a href="index.html"><span>&#127968;</span> Home</a>
     </div>
   </nav>
 
-  <!-- Main Content -->
   <main class="main">
     <div class="page-header">
       <h1>Admin Dashboard</h1>
       <p>Warehouse overview &amp; product management</p>
     </div>
 
-    <!-- Stats -->
+    <!-- Live Stats -->
     <div class="stats-grid">
       <div class="stat-card">
         <div class="stat-icon">&#127852;</div>
-        <div class="stat-value">248</div>
+        <div class="stat-value" id="stat-products">—</div>
         <div class="stat-label">Total Products</div>
-        <div class="stat-delta">&#8593; 12 this week</div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">&#128230;</div>
-        <div class="stat-value">1,840</div>
+        <div class="stat-value" id="stat-stock">—</div>
         <div class="stat-label">Factory Stock (kg)</div>
-        <div class="stat-delta">&#8593; 5% from last batch</div>
       </div>
       <div class="stat-card">
         <div class="stat-icon">&#128203;</div>
-        <div class="stat-value">37</div>
+        <div class="stat-value" id="stat-orders">—</div>
         <div class="stat-label">Pending Orders</div>
-        <div class="stat-delta" style="color:#e8a020">&#9679; Needs attention</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-icon">&#8617;</div>
-        <div class="stat-value">4</div>
-        <div class="stat-label">Sweet Returns</div>
-        <div class="stat-delta" style="color:#ef5959">&#8595; Review required</div>
       </div>
     </div>
 
-    <!-- Add Sweet Form + Recent Products Table -->
+    <!-- Add Sweet + Remove Sweet -->
     <div class="grid-2" id="add-sweets">
       <div class="card">
-        <div class="card-header">
-          <h2>&#43; Add Sweet Product</h2>
-        </div>
+        <div class="card-header"><h2>&#43; Add Sweet Product</h2></div>
         <div class="card-body">
-          <form>
+          <form id="add-product-form">
             <div class="form-group">
               <label>Sweet Name</label>
-              <input type="text" placeholder="e.g. Rasgulla, Gulab Jamun">
+              <input id="p-name" type="text" placeholder="e.g. Rasgulla, Gulab Jamun" required>
             </div>
             <div class="form-group">
               <label>Category</label>
-              <select>
+              <select id="p-category">
                 <option>Milk-based</option>
                 <option>Flour-based</option>
                 <option>Nut-based</option>
@@ -129,122 +105,83 @@
             </div>
             <div class="grid-2" style="gap:12px">
               <div class="form-group">
-                <label>Price (₹)</label>
-                <input type="number" placeholder="0.00">
+                <label>Price (&#8377;/kg)</label>
+                <input id="p-price" type="number" min="0" step="0.01" placeholder="0.00" required>
               </div>
               <div class="form-group">
                 <label>Stock (kg)</label>
-                <input type="number" placeholder="0">
+                <input id="p-stock" type="number" min="0" step="0.01" placeholder="0" required>
               </div>
             </div>
             <div class="form-group">
               <label>Expiry Date</label>
-              <input type="date">
+              <input id="p-expiry" type="date">
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:4px">Add Product</button>
           </form>
         </div>
       </div>
 
-      <div class="card" id="delete-sweets">
-        <div class="card-header">
-          <h2>&#128465; Remove Sweet</h2>
-        </div>
-        <div class="card-body">
-          <div class="form-group">
-            <label>Sweet Name</label>
-            <input type="text" list="sweet-list" placeholder="Type to search...">
-            <datalist id="sweet-list">
-              <option value="Rasgulla">
-              <option value="Gulab Jamun">
-              <option value="Lod Chomchom">
-              <option value="Sweet Curd">
-              <option value="Jalebi">
-              <option value="Peda">
-            </datalist>
+      <div id="delete-sweets">
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-header"><h2>&#128465; Remove Sweet</h2></div>
+          <div class="card-body">
+            <form id="remove-product-form">
+              <div class="form-group">
+                <label>Select Product</label>
+                <select id="remove-product-select"><option value="">Loading…</option></select>
+              </div>
+              <button type="submit" class="btn btn-danger" style="width:100%;justify-content:center;margin-top:4px">Remove Product</button>
+            </form>
           </div>
-          <div class="form-group">
-            <label>Reason for Removal</label>
-            <select>
-              <option>Expired</option>
-              <option>Discontinued</option>
-              <option>Quality Issue</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <button class="btn btn-danger" style="width:100%;justify-content:center;margin-top:12px">Remove Product</button>
         </div>
 
-        <div class="card-header" style="margin-top:8px" id="stock">
-          <h2>&#128230; Factory Stock Entry</h2>
-        </div>
-        <div class="card-body">
-          <div class="grid-2" style="gap:12px">
-            <div class="form-group">
-              <label>Batch ID</label>
-              <input type="text" placeholder="e.g. BATCH-2024-01">
-            </div>
-            <div class="form-group">
-              <label>Quantity (kg)</label>
-              <input type="number" placeholder="0">
-            </div>
+        <div class="card" id="stock">
+          <div class="card-header"><h2>&#128230; Factory Stock Entry</h2></div>
+          <div class="card-body">
+            <form id="stock-form">
+              <div class="form-group">
+                <label>Product</label>
+                <select id="stock-product-select"><option value="">Loading…</option></select>
+              </div>
+              <div class="form-group">
+                <label>Add Quantity (kg)</label>
+                <input id="stock-qty" type="number" min="0" step="0.01" placeholder="0" required>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Record Stock</button>
+            </form>
           </div>
-          <button class="btn btn-primary" style="width:100%;justify-content:center">Record Stock</button>
         </div>
       </div>
     </div>
 
-    <!-- Products Table -->
+    <!-- Live Products Table -->
     <div class="card section-gap" id="orders">
       <div class="card-header">
         <h2>&#127852; Product Inventory</h2>
-        <button class="btn btn-ghost" style="padding:7px 14px;font-size:13px">&#8595; Export</button>
       </div>
       <div class="table-wrap">
         <table class="data-table">
           <thead>
             <tr>
-              <th>Sweet Name</th>
-              <th>Category</th>
-              <th>Price</th>
-              <th>Stock (kg)</th>
-              <th>Expiry</th>
-              <th>Status</th>
+              <th>Sweet Name</th><th>Category</th><th>Price</th><th>Stock (kg)</th><th>Expiry</th><th>Status</th><th></th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>Rasgulla</td><td>Milk-based</td><td>₹ 320/kg</td><td>180</td><td>2024-12-30</td>
-              <td><span class="badge badge-green">In Stock</span></td>
-            </tr>
-            <tr>
-              <td>Gulab Jamun</td><td>Milk-based</td><td>₹ 280/kg</td><td>95</td><td>2024-12-20</td>
-              <td><span class="badge badge-yellow">Low Stock</span></td>
-            </tr>
-            <tr>
-              <td>Jalebi</td><td>Flour-based</td><td>₹ 160/kg</td><td>240</td><td>2025-01-05</td>
-              <td><span class="badge badge-green">In Stock</span></td>
-            </tr>
-            <tr>
-              <td>Peda</td><td>Milk-based</td><td>₹ 400/kg</td><td>12</td><td>2024-12-18</td>
-              <td><span class="badge badge-red">Critical</span></td>
-            </tr>
+          <tbody id="products-tbody">
+            <tr><td colspan="7" style="padding:20px;text-align:center;color:var(--text-muted)">Loading…</td></tr>
           </tbody>
         </table>
       </div>
     </div>
-
   </main>
 </div>
 
 <script>
-function toggleMenu() {
-  document.getElementById('userMenu').classList.toggle('open');
-}
+function toggleMenu() { document.getElementById('userMenu').classList.toggle('open'); }
 window.addEventListener('click', function(e) {
-  const menu = document.getElementById('userMenu');
-  if (!e.target.closest('#userMenu')) menu.classList.remove('open');
+  if (!e.target.closest('#userMenu')) document.getElementById('userMenu').classList.remove('open');
 });
 </script>
+<script type="module" src="admin.js"></script>
 </body>
 </html>

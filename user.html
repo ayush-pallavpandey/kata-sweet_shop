@@ -10,13 +10,20 @@
 <style>
   .center-wrap {
     min-height: 100vh;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--bg-base); padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-base);
+    padding: 24px;
   }
   .form-card {
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 16px; padding: 40px 36px;
-    width: 100%; max-width: 480px; box-shadow: var(--shadow);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: var(--shadow);
   }
   .form-card-header { margin-bottom: 28px; text-align: center; }
   .form-card-header img { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; margin-bottom: 16px; }
@@ -28,12 +35,6 @@
     margin-bottom: 24px; transition: color 0.15s;
   }
   .back-link:hover { color: var(--accent); }
-  .success-banner {
-    display: none;
-    background: rgba(76,175,138,0.15); border: 1px solid rgba(76,175,138,0.4);
-    color: #4caf8a; border-radius: 8px; padding: 12px 16px;
-    font-size: 14px; font-weight: 600; margin-bottom: 20px; text-align: center;
-  }
 </style>
 </head>
 <body>
@@ -46,33 +47,32 @@
         <h1>Add New Shop</h1>
         <p>Register a new shop to the warehouse network</p>
       </div>
-      <div id="success-msg" class="success-banner">&#10003; Shop registered successfully!</div>
       <form id="addShopForm">
         <div class="form-group">
           <label>Shop Name</label>
-          <input type="text" name="name" placeholder="e.g. Main Bazar Sweet Shop" required>
+          <input type="text" placeholder="e.g. Main Bazar Sweet Shop" required>
         </div>
         <div class="form-group">
           <label>Address</label>
-          <input type="text" name="address" placeholder="Street, Area, City" required>
+          <input type="text" placeholder="Street, Area, City" required>
         </div>
         <div class="grid-2" style="gap:14px">
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" required>
           </div>
           <div class="form-group">
             <label>Alternate Phone</label>
-            <input type="tel" name="alt_phone" placeholder="+91 XXXXX XXXXX">
+            <input type="tel" placeholder="+91 XXXXX XXXXX">
           </div>
         </div>
         <div class="form-group">
           <label>Manager Name</label>
-          <input type="text" name="manager_name" placeholder="Responsible person">
+          <input type="text" placeholder="Responsible person">
         </div>
         <div class="form-group">
           <label>Shop Type</label>
-          <select name="shop_type">
+          <select>
             <option>Retail</option>
             <option>Wholesale</option>
             <option>Franchise</option>
@@ -85,6 +85,5 @@
     </div>
   </div>
 </div>
-<script type="module" src="user.js"></script>
 </body>
 </html>

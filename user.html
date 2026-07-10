@@ -1,25 +1,88 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Add Shop</title>
-<link rel="stylesheet" href="user.css">
+<title>Add Shop — Warehouse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+  .center-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-base);
+    padding: 24px;
+  }
+  .form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 40px 36px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: var(--shadow);
+  }
+  .form-card-header { margin-bottom: 28px; text-align: center; }
+  .form-card-header img { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; margin-bottom: 16px; }
+  .form-card-header h1 { font-size: 22px; font-weight: 700; }
+  .form-card-header p { color: var(--text-muted); font-size: 14px; margin-top: 4px; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--text-muted); text-decoration: none; font-size: 13px;
+    margin-bottom: 24px; transition: color 0.15s;
+  }
+  .back-link:hover { color: var(--accent); }
+</style>
 </head>
-
 <body>
-<div class="add_shop">
-  <div class="add_form">
-  <form id="add" action="">
- 	<table padding="5px">
- 	<tr><th colspan="2"><span>Add Shops</span></th></tr>
-	<tr><td><label>Shop Name: </label></td><td><input list="sweet" name="sweet_list"></td></tr>
- 	<tr><td><label>Address:</label></td><td><input type="text" name="price" id="price" align="center"></td></tr>
- 	<tr><td height="31"><label>Phone Number:</label></td><td><input type="number" name="qty" id="qty"></td></tr>
-    <tr><td height="38"><label>Alternate Phone Number:</label></td><td><input type="number" name="qty" id="qty"></td></tr>
- 	<tr><td height="92" colspan="2"><input type="submit" value="Add" id="btn2" name="btn" onClick=""></td></tr>
- 	</table>
-    </form>
+<div class="center-wrap">
+  <div>
+    <a href="manager.html" class="back-link">&#8592; Back to Manager Desk</a>
+    <div class="form-card">
+      <div class="form-card-header">
+        <img src="image.png" alt="logo">
+        <h1>Add New Shop</h1>
+        <p>Register a new shop to the warehouse network</p>
+      </div>
+      <form id="addShopForm">
+        <div class="form-group">
+          <label>Shop Name</label>
+          <input type="text" placeholder="e.g. Main Bazar Sweet Shop" required>
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" placeholder="Street, Area, City" required>
+        </div>
+        <div class="grid-2" style="gap:14px">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX" required>
+          </div>
+          <div class="form-group">
+            <label>Alternate Phone</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Manager Name</label>
+          <input type="text" placeholder="Responsible person">
+        </div>
+        <div class="form-group">
+          <label>Shop Type</label>
+          <select>
+            <option>Retail</option>
+            <option>Wholesale</option>
+            <option>Franchise</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px;padding:12px 20px">
+          &#43; Add Shop
+        </button>
+      </form>
+    </div>
   </div>
 </div>
 </body>

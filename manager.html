@@ -1,99 +1,230 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manager</title>
-<link rel="stylesheet" href="dash.css">
+<title>Manager — Warehouse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
 </head>
-
 <body>
-<div class="header"><p>Manager Desk</p>
+<div class="app">
 
-  <div class="dropdown">
-<button onclick="myFunction()" class="dropbtn"><img src="avatar.png" alt="no image" id="user_photo" height="30px" width="30px">  User</button>
+  <!-- Top Bar -->
+  <header class="topbar">
+    <div class="topbar-brand">
+      <img src="image.png" alt="logo" class="topbar-logo">
+      <span class="topbar-title">Sweet<span>House</span> Manager</span>
+    </div>
+    <div class="topbar-right">
+      <div class="user-menu" id="userMenu">
+        <button class="user-btn" onclick="toggleMenu()">
+          <img src="avatar.png" alt="User">
+          <span>Manager</span>
+          <span class="chevron">▼</span>
+        </button>
+        <div class="dropdown-menu">
+          <a href="#">&#128274; Change Password</a>
+          <div class="divider"></div>
+          <a href="index.html">&#127968; Home</a>
+          <div class="divider"></div>
+          <a href="#" style="color:#ef5959">&#10006; Log Out</a>
+        </div>
+      </div>
+    </div>
+  </header>
 
-  <div id="myDropdown" class="dropdown-content">
-    <a href="#change_password">Change Password</a>
-    <a href="#log_out">Log Out</a>
-    <a href="#help">Help</a></div>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Main</div>
+      <ul class="nav-list">
+        <li><a href="index.html"><span class="icon">&#9783;</span> Dashboard</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Shops</div>
+      <ul class="nav-list">
+        <li><a href="user.html"><span class="icon">&#43;</span> Add Shop</a></li>
+        <li><a href="#delete-shop"><span class="icon">&#128465;</span> Delete Shop</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Inventory</div>
+      <ul class="nav-list">
+        <li><a href="#upload" class="active"><span class="icon">&#8679;</span> Upload Sweets</a></li>
+        <li><a href="#stock"><span class="icon">&#128230;</span> Inventory Stock</a></li>
+        <li><a href="#orders"><span class="icon">&#128203;</span> Orders</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Navigation</div>
+      <ul class="nav-list">
+        <li><a href="admin.html"><span class="icon">&#128274;</span> Admin Panel</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-footer">
+      <a href="#"><span>&#9881;</span> Settings</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main">
+    <div class="page-header">
+      <h1>Manager Desk</h1>
+      <p>Manage shop inventory, orders &amp; product listings</p>
     </div>
 
-  <script>
-function myFunction() {
-    document.getElementById("myDropdown").classList.toggle("show");
-}
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">&#128722;</div>
+        <div class="stat-value">18</div>
+        <div class="stat-label">Active Shops</div>
+        <div class="stat-delta">&#8593; 2 this month</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">&#127852;</div>
+        <div class="stat-value">64</div>
+        <div class="stat-label">Products Listed</div>
+        <div class="stat-delta">&#8593; 8 new</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">&#128203;</div>
+        <div class="stat-value">23</div>
+        <div class="stat-label">Active Orders</div>
+        <div class="stat-delta" style="color:#e8a020">&#9679; Processing</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">&#128230;</div>
+        <div class="stat-value">92%</div>
+        <div class="stat-label">Stock Availability</div>
+        <div class="stat-delta">On track</div>
+      </div>
+    </div>
 
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-</script>
+    <!-- Upload + Remove forms -->
+    <div class="grid-2" id="upload">
+      <div class="card">
+        <div class="card-header">
+          <h2>&#8679; Upload Product for Order</h2>
+        </div>
+        <div class="card-body">
+          <form>
+            <div class="form-group">
+              <label>Sweet Name</label>
+              <input type="text" list="sweet-opts" placeholder="Select or type sweet name">
+              <datalist id="sweet-opts">
+                <option value="Rasgulla">
+                <option value="Lod Chomchom">
+                <option value="Sweet Curd">
+                <option value="Gulab Jamun">
+                <option value="Jalebi">
+                <option value="Peda">
+              </datalist>
+            </div>
+            <div class="grid-2" style="gap:12px">
+              <div class="form-group">
+                <label>Price (₹)</label>
+                <input type="number" placeholder="0.00">
+              </div>
+              <div class="form-group">
+                <label>Quantity (kg)</label>
+                <input type="number" placeholder="0">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Assign to Shop</label>
+              <select>
+                <option value="">— Select Shop —</option>
+                <option>Shop 01 – Main Bazar</option>
+                <option>Shop 02 – Station Road</option>
+                <option>Shop 03 – Civil Lines</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">Upload Order</button>
+          </form>
+        </div>
+      </div>
 
-</div>
-<div class="sidebar">
-<ul>
-  <li><a href="index.html">Dashboard</a></li>
-  <li><a href="user.html">Add Shop</a></li>
-  <li><a href="manager.html">Delete Shop</a></li>
-  <li><a href="manager.html">Upload Sweets</a></li>
-  <li><a href="manager.html">Inventory Stock</a></li>
-  <li><a href="manager.html">Orders</a></li>
-</ul>
-</div>
+      <div class="card" id="delete-shop">
+        <div class="card-header">
+          <h2>&#128465; Remove Product / Shop</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label>Product Name</label>
+            <input type="text" list="sweet-opts2" placeholder="Type to search...">
+            <datalist id="sweet-opts2">
+              <option value="Rasgulla">
+              <option value="Gulab Jamun">
+              <option value="Jalebi">
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label>Shop</label>
+            <select>
+              <option value="">— Select Shop —</option>
+              <option>Shop 01 – Main Bazar</option>
+              <option>Shop 02 – Station Road</option>
+            </select>
+          </div>
+          <button class="btn btn-danger" style="width:100%;justify-content:center">Remove</button>
+        </div>
+      </div>
+    </div>
 
-<div class="bodywrap">
-
-<img src="black-background2.jpg" alt="no image">
-  <div class="content1">
-  <form class="form" action="">
-          <datalist id="sweet">
-                <option value="Rasgulla"></option>
-                <option value="Lod chomchom"></option>
-                <option value="Sweet Curd"></option>
-              <option value="Gulab Jamun"></option>
-          </datalist>
-      <table>
-          <tr><th colspan="2"><span>Upload Product for Order</span></th></tr>
-          <tr><td><label>Sweet Name: </label></td><td><input type="text" placeholder="Select Sweet Name" list="sweet" name="sweet_list"></td></tr>
-          <tr><td><label>Price:</label></td><td><input type="text" placeholder="Enter Price" name="price" id="price"></td></tr>
-          <tr><td><label>Quantity:</label></td><td><input type="text" placeholder="Enter Quantity" name="qty" id="qty"></td></tr>
-          </table>
-          <button class="sub">Submit</button>
-        </form>
-  </div>
-
-  <div class="content2">
-  <form class="form" action="">
-          <datalist id="sweet1">
-                <option value="Rasgulla"></option>
-                <option value="Lod chomchom"></option>
-                <option value="Sweet Curd"></option>
-              <option value="Gulab Jamun"></option>
-          </datalist>
-          <table>
-          <tr><th colspan="2"><span>Remove Product</span></th></tr>
-          <tr><td><label>Sweet Name: </label></td><td><input type="text" list="sweet" name="sweet_list"></td></tr>
-          </table>
-          <button class="sub">Remove</button>
-    </form>
-  </div>
-
-  <div class="content3">
-  <table border="1">
-          <tr><th colspan="4">Sweets For Sale</th></tr>
-          <tr><th>Sweet Name</th><th>Price</th><th>Available Quantity</th><th>Expiry Date</th></tr>
+    <!-- Inventory Table -->
+    <div class="card section-gap" id="stock">
+      <div class="card-header">
+        <h2>&#128230; Sweets For Sale — Inventory</h2>
+        <button class="btn btn-ghost" style="padding:7px 14px;font-size:13px">&#8595; Export</button>
+      </div>
+      <div class="table-wrap" id="orders">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Sweet Name</th>
+              <th>Shop</th>
+              <th>Price</th>
+              <th>Available (kg)</th>
+              <th>Expiry Date</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rasgulla</td><td>Shop 01</td><td>₹ 320/kg</td><td>80</td><td>2024-12-30</td>
+              <td><span class="badge badge-green">In Stock</span></td>
+            </tr>
+            <tr>
+              <td>Gulab Jamun</td><td>Shop 02</td><td>₹ 280/kg</td><td>40</td><td>2024-12-20</td>
+              <td><span class="badge badge-yellow">Low Stock</span></td>
+            </tr>
+            <tr>
+              <td>Jalebi</td><td>Shop 01</td><td>₹ 160/kg</td><td>120</td><td>2025-01-05</td>
+              <td><span class="badge badge-green">In Stock</span></td>
+            </tr>
+            <tr>
+              <td>Peda</td><td>Shop 03</td><td>₹ 400/kg</td><td>8</td><td>2024-12-18</td>
+              <td><span class="badge badge-red">Critical</span></td>
+            </tr>
+          </tbody>
         </table>
-  </div>
-
+      </div>
+    </div>
+  </main>
 </div>
+
+<script>
+function toggleMenu() {
+  document.getElementById('userMenu').classList.toggle('open');
+}
+window.addEventListener('click', function(e) {
+  const menu = document.getElementById('userMenu');
+  if (!e.target.closest('#userMenu')) menu.classList.remove('open');
+});
+</script>
 </body>
 </html>
